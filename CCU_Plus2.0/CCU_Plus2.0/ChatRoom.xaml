@@ -1,0 +1,22 @@
+﻿<Page x:Class="CCU_Plus2._0.ChatRoom"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CCU_Plus2._0"
+	  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="457"
+      Title="ChatRoom" Width="845">
+
+    <Grid Background="#FFDEDEDE">
+		<ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True" Height="430" Margin="20,14,271,13">
+            <StackPanel Name="ChatBox" Background="#9baec8">
+			</StackPanel>
+		</ScrollViewer>
+		<ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True" Height="430" Margin="645,14,27,13">
+            <StackPanel Name="MemberBox" Background="#9baec8">
+			</StackPanel>
+		</ScrollViewer>
+	</Grid>
+</Page>

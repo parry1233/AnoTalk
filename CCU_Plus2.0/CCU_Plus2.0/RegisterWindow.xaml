@@ -1,0 +1,127 @@
+﻿<Window x:Class="CCU_Plus2._0.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CCU_Plus2._0"
+        mc:Ignorable="d"
+        Title="Register" Icon="Icon/chat.ico" Height="349.303" Width="382.547" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style  TargetType="{x:Type ComboBox}">
+            <Setter Property="Padding" Value="7"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Width" Value="205"/>
+            <Setter Property="Height" Value="33"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Border  BorderBrush="DarkGray" BorderThickness="3" CornerRadius="10" Background="DarkGray">
+                            <Grid>
+                                <!--箭頭-->
+                                <ToggleButton ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="2" MinWidth="0" MinHeight="0" Width="Auto">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="MinWidth" Value="0"/>
+                                            <Setter Property="MinHeight" Value="0"/>
+                                            <Setter Property="Width" Value="Auto"/>
+                                            <Setter Property="Height" Value="Auto"/>
+                                            <Setter Property="Background" Value="DarkGray"/>
+                                            <Setter Property="BorderBrush" Value="DarkGray"/>
+                                            <Setter Property="BorderThickness" Value="2"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <DockPanel Background="{TemplateBinding Background}" LastChildFill="False" SnapsToDevicePixels="True">
+                                                            <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"  DockPanel.Dock="Right" >
+                                                                <Path Data="M0,0L3.5,4 7,0z" Fill="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                            </Border>
+                                                        </DockPanel>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <!--combobox內容項目-->
+                                <ContentPresenter  IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" VerticalAlignment="Center" Margin="3" HorizontalAlignment="Stretch" />
+                                <TextBox x:Name="PART_EditableTextBox" HorizontalAlignment="Stretch" Focusable="True" Visibility="Collapsed" IsReadOnly="False"/>
+                                <!--設置下拉面板相對位置-->
+                                <Popup HorizontalOffset="-1" Width="{TemplateBinding ActualWidth}"
+                                       IsOpen="{TemplateBinding IsDropDownOpen}" Focusable="False"    PopupAnimation="Slide">
+                                    <Grid  SnapsToDevicePixels="True" HorizontalAlignment="Stretch">
+                                        <Border  BorderThickness="1,1,1,1" BorderBrush="Gray" HorizontalAlignment="Stretch" CornerRadius="5">
+                                            <Border.Background>
+                                                <SolidColorBrush Color="White" />
+                                            </Border.Background>
+                                        </Border>
+                                        <ScrollViewer  SnapsToDevicePixels="True" HorizontalAlignment="Stretch" >
+                                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" HorizontalAlignment="Stretch" />
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="Button1">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="Width" Value="141"/>
+            <Setter Property="Height" Value="33"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="9" Name="PART_Background">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="Gray" Offset="0.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF3F3F46">
+        <Label Content="使用者帳號:" HorizontalAlignment="Left" Margin="24,26,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
+        <TextBox Name="idTextBox" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="31" FontSize="16" Margin="118,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Text="Account" GotFocus="idTextBox_GotFocus" LostFocus="idTextBox_LostFocus"/>
+        <TextBox Name="pwTextBox"  HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="28" FontSize="16" Margin="118,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Text="Password" GotFocus="pwTextBox_GotFocus" LostFocus="pwTextBox_LostFocus"/>
+        <TextBox Name="nameTextBox" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="28" FontSize="16" Margin="118,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Text="Name" GotFocus="nameTextBox_GotFocus" LostFocus="nameTextBox_LostFocus"/>
+        <Label Content="使用者密碼:" HorizontalAlignment="Left" Margin="24,60,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
+        <Label Content="使用者名稱:" HorizontalAlignment="Left" Margin="24,91,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
+        <Label Content="使用者性別:" HorizontalAlignment="Left" Margin="23,124,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
+
+        <RadioButton Name="MaleRadioBTN" Content="♂" HorizontalAlignment="Left" VerticalContentAlignment="Bottom" Margin="120,125,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
+        <RadioButton Name="FemaleRadioBTN" Content="♀" HorizontalAlignment="Left" VerticalContentAlignment="Bottom" Margin="170,125,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
+        <TextBox Name="departTextBox" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="28" Margin="118,155,0,0" FontSize="16" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Text="Department" GotFocus="departTextBox_GotFocus" LostFocus="departTextBox_LostFocus"/>
+        <Label Content="使用者系所:" HorizontalAlignment="Left" Margin="23,156,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
+        <Label Content="使用者年級:" HorizontalAlignment="Left" Margin="23,189,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
+        <TextBox Name="emailTextBox" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="28" Margin="110,222,0,0" FontSize="16" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Text="Email" GotFocus="emailTextBox_GotFocus" LostFocus="emailTextBox_LostFocus"/>
+        <Label Content="聯絡信箱:" HorizontalAlignment="Left" Margin="23,222,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
+        <Button Content="Check ID" HorizontalAlignment="Left" Margin="285,24,0,0" VerticalAlignment="Top" Width="67" Click="CheckIDBTN_Click" Style="{StaticResource Button1}" Height="28"/>
+        <Button Name="ConfirmBTN" Content="Next Step" HorizontalAlignment="Left" Margin="69,264,0,0" VerticalAlignment="Top" Width="275" Click="Register" Height="28" Style="{StaticResource Button1}"/>
+        <ComboBox x:Name="GradeComboBox" HorizontalAlignment="Left" Height="23" Margin="119,191,0,0" VerticalAlignment="Top" Width="109">
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
+            <ComboBoxItem Content="5"/>
+            <ComboBoxItem Content="6"/>
+        </ComboBox>
+    </Grid>
+</Window>

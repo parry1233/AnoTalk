@@ -1,0 +1,25 @@
+﻿<Window x:Class="ChatOnline_Server.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChatOnline_Server"
+        mc:Ignorable="d"
+        Title="Server" Icon="Icon/server.ico" Height="655.022" Width="845.319" ContentRendered="Window_ContentRendered">
+	<Grid Background="#FF3F3F46">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="380*"/>
+			<ColumnDefinition Width="179*"/>
+			<ColumnDefinition Width="234*"/>
+		</Grid.ColumnDefinitions>
+		<Label Name="ServerIPLabel" Content="IP:" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Foreground="White" Width="123"/>
+		<Label Name="ServerPortLabel" Content="Port:" HorizontalAlignment="Left" Margin="193,10,0,0" VerticalAlignment="Top" Foreground="White" Height="25" Width="78"/>
+		<ComboBox Name="ClientComboBox" HorizontalAlignment="Left" Margin="10,512,0,0" VerticalAlignment="Top" Width="259" Height="26"/>
+		<TextBox Name="SendTextBox" HorizontalAlignment="Left" Height="63" Margin="10,543,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="814" Grid.ColumnSpan="3"/>
+		<Button Name="SendBTN" Content="Send Instructions" HorizontalAlignment="Left" Margin="171,512,0,0" VerticalAlignment="Top" Width="252" Height="26" Click="Button_Click" FontSize="16" Grid.Column="1" Grid.ColumnSpan="2"/>
+		<TextBox Name="LogTextBox" ScrollViewer.VerticalScrollBarVisibility="Visible"  HorizontalAlignment="Left" Height="467" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="814" Grid.ColumnSpan="3" IsReadOnly="True" Background="#FF3F3F46" Foreground="White"/>
+		<Button Name="ConnectBTN" Content="Test" HorizontalAlignment="Left" Margin="394,10,0,0" VerticalAlignment="Top" Width="134" Height="25" Click="ConnectBTN_Click" Grid.ColumnSpan="2"/>
+		<ProgressBar Name="LoadProgress" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="159,10,0,0" VerticalAlignment="Top" Width="264"/>
+
+	</Grid>
+</Window>

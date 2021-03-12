@@ -1,0 +1,89 @@
+﻿<Window x:Class="CCU_Plus2._0.UserMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CCU_Plus2._0"
+		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="ChatOnline" Icon="Icon/chat.ico" Height="600" Width="1080" Foreground="White" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="Button1">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="12" Name="PART_Background">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="Gray" Offset="0.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="Textbox1">
+            <Setter Property="Padding" Value="7"/>
+            <Setter Property="Foreground" Value="#000"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border"
+                                CornerRadius="15"
+                                BorderBrush="LightGray"
+                                BorderThickness="2"
+                                Background="LightGray" Margin="10,0,10,0">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="true">
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+	<Grid Background="#FFDEDEDE">
+		<Grid Height="60" VerticalAlignment="Top" Background="#FF122D48" >
+			<Grid.Effect>
+				<DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
+			</Grid.Effect>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Background="#FF122D48">
+				<TextBlock Name="UserName" Text="User" VerticalAlignment="Center" FontSize="16"/>
+				<materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10" Background="#FF122D48">
+					<StackPanel Width="150" Background="#FF122D48">
+						<Button Name="GoChat" Content="ChatRoom" Click="GoChat_Click" Foreground="White"/>
+						<Button Name="GoAccount" Content="Account" Click="GoAccount_Click" Foreground="White"/>
+						<Button Name="GoContact" Content="Contact" Click="GoContact_Click" Foreground="White"/>
+						<Separator/>
+						<Button Name="GoOut" Content="Logout" Click="GoOut_Click" Foreground="White"/>
+					</StackPanel>
+				</materialDesign:PopupBox>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonDown">
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"><Run Text="Ano Talk"/></TextBlock>
+			</StackPanel>
+			<Image x:Name="image" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="71"/>
+		</Grid>
+		<Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1080">
+			<Frame Name="frame" Content="" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" Height="457" Margin="110,10,0,0" VerticalAlignment="Top" Width="845"/>
+		</Grid>
+		<Grid Height="60" VerticalAlignment="Bottom" Background="#FF122D48">
+			<Grid.Effect>
+				<DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
+			</Grid.Effect>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Right"/>
+			<TextBox Name="SendBox" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="40" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="887" FontSize="20" Style="{StaticResource Textbox1}"/>
+			<Button Name="SendBTN" Content="SEND" HorizontalAlignment="Left" Margin="902,10,0,0" VerticalAlignment="Top" Width="168" Height="40" FontSize="18" Click="SendBTN_Click" Style="{StaticResource Button1}"/>
+		</Grid>
+	</Grid>
+</Window>
